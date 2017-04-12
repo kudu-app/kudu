@@ -25,9 +25,11 @@ message Item {
 
 // ListRequest holds item list filter value.
 message ListRequest {
-  string goal = 1;
+  kudu.type.Date  date  = 1;
 
-  string tag  = 2;
+  string goal           = 2;
+
+  string tag            = 3;
 }
 
 // ListResponse holds item list information.
