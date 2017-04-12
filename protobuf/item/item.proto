@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package kudu.item;
+
+option go_package = "github.com/rnd/kudu/golang/protogen/item";
+
+import "type/date.proto";
+
+// Item holds item information.
+message Item {
+  string          id       = 1;
+
+  string          goal     = 2;
+
+  string          url      = 3;
+
+  string          tag      = 4;
+
+  string          notes    = 5;
+
+  string          notes_md = 6;
+
+  kudu.type.Date  date      = 7;
+}
+
+// ListRequest holds item list filter value.
+message ListRequest {
+  string goal = 1;
+
+  string tag  = 2;
+}
+
+// ListResponse holds item list information.
+message ListResponse {
+    repeated Item items = 1;
+}
+
+// AddRequest holds information of item that is going to be added.
+message AddRequest {
+  Item item = 1;
+}
+
+// AddResponse holds newly added item id.
+message AddResponse {
+  string id = 1;
+}
+
+// GetRequest holds item filter value.
+message GetRequest {
+  string id = 1;
+}
+
+// GetResponse holds item information.
+message GetResponse {
+  Item item = 1;
+}
+
+// ItemService provides method for item operation.
+service ItemService {
+  rpc ListItem(ListRequest) returns(ListResponse) {}
+
+  rpc AddItem(AddRequest) returns(AddResponse) {}
+
+  rpc GetItem(GetRequest) returns(GetResponse) {}
+}
