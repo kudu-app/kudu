@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package kudu.type;
+
+option go_package = "github.com/rnd/kudu/golang/protogen/kudu/type/creds";
+
+// Credential holds user access information.
+message Credential {
+  // email is the unique identifier for the credential
+  string email                                         = 1;
+
+  // password is the secret credential.
+  string password                                      = 2;
+}

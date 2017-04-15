@@ -5,22 +5,25 @@ package kudu.item;
 option go_package = "github.com/rnd/kudu/golang/protogen/item";
 
 import "type/date.proto";
+import "google/protobuf/timestamp.proto";
 
 // Item holds item information.
 message Item {
-  string          id       = 1;
+  string id                           = 1;
 
-  string          goal     = 2;
+  string goal                         = 2;
 
-  string          url      = 3;
+  string url                          = 3;
 
-  string          tag      = 4;
+  string tag                          = 4;
 
-  string          notes    = 5;
+  string notes                        = 5;
 
-  string          notes_md = 6;
+  string notes_md                     = 6;
 
-  kudu.type.Date  date      = 7;
+  kudu.type.Date  date                = 7;
+
+  google.protobuf.Timestamp timestamp = 8;
 }
 
 // ListRequest holds item list filter value.

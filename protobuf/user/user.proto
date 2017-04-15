@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package kudu.item;
+
+option go_package = "github.com/rnd/kudu/golang/protogen/user";
+
+import "google/protobuf/timestamp.proto";
+import "type/creds.proto";
+
+// User hold user information.
+message User {
+  // id is user unique identifier.
+  string id                                 = 1;
+
+  // username is user unique username.
+  string username                           = 2;
+
+  // first_name is user first name.
+  string first_name                         = 3;
+
+  // last_name is user last name.
+  string last_name                          = 4;
+
+  // created is user registration timestamp
+  google.protobuf.Timestamp created         = 5;
+}
+
+// RegisterRequest holds user registration information.
+message RegisterRequest {
+  // credential is user credential.
+  kudu.type.Credential credential      = 1;
+
+  // user is user profile information.
+  User user                            = 2;
+}
+
+// RegisterResponse holds the response of user registration.
+message RegisterResponse {
+  // status is the registration response status.
+  string status                                  = 1;
+
+  // token is valid jwt token.
+  string token                                   = 2;
+}
+
+// LoginRequest holds login reqeuest information.
+message LoginRequest {
+  // credential is user claimed credential.
+  kudu.type.Credential credential = 1;
+}
+
+// LoginResponse holds login reqeuest information.
+message LoginResponse {
+  // status is the registration response status.
+  string status = 1;
+}
+
+// UserService provides method for user management.
+service UserService {
+  rpc Register(RegisterRequest) returns(RegisterResponse) {}
+
+  rpc Login(LoginRequest) returns(LoginResponse) {}
+}
