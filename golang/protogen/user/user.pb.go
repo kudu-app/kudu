@@ -21,7 +21,7 @@ import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
 import google_protobuf "github.com/golang/protobuf/ptypes/timestamp"
-import kudu_type "github.com/rnd/kudu/golang/protogen/kudu/type/creds"
+import kudu_type "github.com/rnd/kudu/golang/protogen/type/creds"
 
 import (
 	context "golang.org/x/net/context"

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package kudu.type;
 
-option go_package = "github.com/rnd/kudu/golang/protogen/kudu/type/creds";
+option go_package = "github.com/rnd/kudu/golang/protogen/type/creds";
 
 // Credential holds user access information.
 message Credential {

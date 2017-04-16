@@ -22,7 +22,7 @@ package item
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import kudu_type "github.com/rnd/kudu/golang/protogen/kudu/type/date"
+import kudu_type "github.com/rnd/kudu/golang/protogen/type/date"
 import google_protobuf "github.com/golang/protobuf/ptypes/timestamp"
 
 import (

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package kudu.type;
 
-option go_package = "github.com/rnd/kudu/golang/protogen/kudu/type/date";
+option go_package = "github.com/rnd/kudu/golang/protogen/type/date";
 
 // Date represents a whole calendar date.
 message Date {
