@@ -12,12 +12,6 @@ message User {
   // id is user unique identifier.
   string id                                 = 1;
 
-  // email is user email.
-  string email                              = 2;
-
-  // username is user unique username.
-  string username                           = 3;
-
   // first_name is user first name.
   string first_name                         = 4;
 
