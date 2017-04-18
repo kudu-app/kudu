@@ -5,6 +5,7 @@ package kudu.item;
 option go_package = "github.com/rnd/kudu/golang/protogen/user";
 
 import "google/protobuf/timestamp.proto";
+import "type/status.proto";
 import "type/creds.proto";
 
 // User hold user information.
@@ -34,10 +35,7 @@ message RegisterRequest {
 // RegisterResponse holds the response of user registration.
 message RegisterResponse {
   // status is the registration response status.
-  string status                                  = 1;
-
-  // token is valid jwt token.
-  string token                                   = 2;
+  kudu.type.ResponseStatus status = 1;
 }
 
 // LoginRequest holds login request information.

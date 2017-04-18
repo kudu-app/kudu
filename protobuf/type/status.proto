@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package kudu.type;
+
+option go_package = "github.com/rnd/kudu/golang/protogen/type/status";
+
+// ResponseStatus is response status status enum type.
+enum ResponseStatus {
+  UNKNOWN = 0;
+  ERROR   = 1;
+  SUCCESS = 2;
+}
