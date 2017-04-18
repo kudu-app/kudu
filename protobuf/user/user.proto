@@ -46,8 +46,11 @@ message LoginRequest {
 
 // LoginResponse holds login request information.
 message LoginResponse {
-  // status is the registration response status.
-  string status = 1;
+  // status is the login response status.
+  kudu.type.ResponseStatus status = 1;
+
+  // token is valid jwt token;
+  string token                    = 2;
 }
 
 // UserService provides method for user management.
