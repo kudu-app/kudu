@@ -5,7 +5,6 @@ package kudu.item;
 option go_package = "github.com/rnd/kudu/golang/protogen/user";
 
 import "google/protobuf/timestamp.proto";
-import "type/status.proto";
 import "type/creds.proto";
 
 // User hold user information.
@@ -23,6 +22,21 @@ message User {
   google.protobuf.Timestamp created         = 6;
 }
 
+// ResponseStatus is response status enum.
+enum ResponseStatus {
+  UNKNOWN                       = 0x0;
+  SUCCESS                       = 0x1;
+  INTERNAL_ERROR                = 0x2;
+
+  CREDENTIAL_INVALID            = 0x10;
+  CREDENTIAL_INVALID_EMAIL      = 0x11;
+  CREDENTIAL_INVALID_USERNAME   = 0x12;
+  CREDENTIAL_INVALID_PASSWORD   = 0x13;
+  CREDENTIAL_NOT_VERIFIED       = 0x14;
+
+  USER_INVALID_FIRST_NAME       = 0x20;
+}
+
 // RegisterRequest holds user registration information.
 message RegisterRequest {
   // credential is user credential.
@@ -35,7 +49,7 @@ message RegisterRequest {
 // RegisterResponse holds the response of user registration.
 message RegisterResponse {
   // status is the registration response status.
-  kudu.type.ResponseStatus status = 1;
+  ResponseStatus status = 1;
 }
 
 // LoginRequest holds login request information.
@@ -47,7 +61,7 @@ message LoginRequest {
 // LoginResponse holds login request information.
 message LoginResponse {
   // status is the login response status.
-  kudu.type.ResponseStatus status = 1;
+  ResponseStatus status = 1;
 
   // token is valid jwt token;
   string token                    = 2;
