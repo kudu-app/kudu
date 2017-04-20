@@ -4,7 +4,6 @@ package kudu.item;
 
 option go_package = "github.com/rnd/kudu/golang/protogen/item";
 
-import "type/date.proto";
 import "google/protobuf/timestamp.proto";
 
 // Item holds item information.
@@ -21,11 +20,9 @@ message Item {
 
   string notes_md                         = 6;
 
-  kudu.type.Date  date                    = 7;
+  google.protobuf.Timestamp created_at    = 7;
 
-  google.protobuf.Timestamp created_at    = 8;
-
-  google.protobuf.Timestamp completed_at  = 9;
+  google.protobuf.Timestamp completed_at  = 8;
 }
 
 // ResponseStatus is response status enum.
