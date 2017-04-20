@@ -8,21 +8,21 @@ import "google/protobuf/timestamp.proto";
 
 // Item holds item information.
 message Item {
-  string id                               = 1;
+  string id           = 1;
 
-  string goal                             = 2;
+  string goal         = 2;
 
-  string url                              = 3;
+  string url          = 3;
 
-  string tags                             = 4;
+  string tags         = 4;
 
-  string notes                            = 5;
+  string notes        = 5;
 
-  string notes_md                         = 6;
+  string notes_md     = 6;
 
-  google.protobuf.Timestamp created_at    = 7;
+  string date         = 7;
 
-  google.protobuf.Timestamp completed_at  = 8;
+  bool completed      = 8;
 }
 
 // ResponseStatus is response status enum.
