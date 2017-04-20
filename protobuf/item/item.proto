@@ -9,62 +9,77 @@ import "google/protobuf/timestamp.proto";
 
 // Item holds item information.
 message Item {
-  string id                           = 1;
+  string id                               = 1;
 
-  string goal                         = 2;
+  string goal                             = 2;
 
-  string url                          = 3;
+  string url                              = 3;
 
-  string tag                          = 4;
+  string tags                             = 4;
 
-  string notes                        = 5;
+  string notes                            = 5;
 
-  string notes_md                     = 6;
+  string notes_md                         = 6;
 
-  kudu.type.Date  date                = 7;
+  kudu.type.Date  date                    = 7;
 
-  google.protobuf.Timestamp timestamp = 8;
+  google.protobuf.Timestamp created_at    = 8;
+
+  google.protobuf.Timestamp completed_at  = 9;
 }
 
-// ListRequest holds item list filter value.
-message ListRequest {
-  kudu.type.Date  date  = 1;
+// ResponseStatus is response status enum.
+enum ResponseStatus {
+  UNKNOWN                 = 0x0;
+  SUCCESS                 = 0x1;
+  INTERNAL_ERROR          = 0x2;
 
-  string goal           = 2;
-
-  string tag            = 3;
+  ITEM_INVALID_GOAL       = 0x10;
+  ITEM_NOT_FOUND          = 0x11;
 }
 
-// ListResponse holds item list information.
-message ListResponse {
-    repeated Item items = 1;
+// TodayItemsRequest holds information which can be used
+// to filter today item list.
+message TodayItemsRequest {
+  string goal           = 1;
+
+  string tags           = 2;
 }
 
-// AddRequest holds information of item that is going to be added.
+// TodayItemsResponse holds today item list.
+message TodayItemsResponse {
+    repeated Item items   = 1;
+
+    ResponseStatus status = 2;
+}
+
+// AddRequest holds information of item which is going to be added.
 message AddRequest {
   Item item = 1;
 }
 
 // AddResponse holds newly added item id.
 message AddResponse {
+  string id             = 1;
+
+  ResponseStatus status = 2;
+}
+
+// RemoveRequest holds item id which is goint to be deleted.
+message RemoveRequest {
   string id = 1;
 }
 
-// GetRequest holds item filter value.
-message GetRequest {
-  string id = 1;
-}
-
-// GetResponse holds item information.
-message GetResponse {
-  Item item = 1;
+// RemoveResponse holds remove item response status.
+message RemoveResponse {
+  ResponseStatus status = 1;
 }
 
 // ItemService provides method for item operation.
 service ItemService {
-  rpc ListItem(ListRequest) returns(ListResponse) {}
+  rpc TodayItems(TodayItemsRequest) returns(TodayItemsResponse) {}
 
   rpc AddItem(AddRequest) returns(AddResponse) {}
 
-  rpc GetItem(GetRequest) returns(GetResponse) {}
+  rpc RemoveItem(RemoveRequest) returns(RemoveResponse) {}
 }
